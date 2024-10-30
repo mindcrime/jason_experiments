@@ -1,0 +1,7 @@
+
+MAS simple_mas_ask_tell2 {
+    agents: neo;
+            agent_smith;
+            random_dude;
+    aslSourcePath: "src/agt";
+}

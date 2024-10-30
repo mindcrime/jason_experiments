@@ -1,0 +1,6 @@
+
+MAS simple_env_action {
+    environment: SimpleEnv()
+    agents: agent_smith [events=requeue];
+    aslSourcePath: "src/agt";
+}

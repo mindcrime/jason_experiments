@@ -1,0 +1,6 @@
+
+MAS simple_mas_ask {
+    agents: neo;
+            agent_smith;
+    aslSourcePath: "src/agt";
+}

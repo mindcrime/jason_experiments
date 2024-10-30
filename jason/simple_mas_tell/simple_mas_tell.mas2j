@@ -1,0 +1,6 @@
+
+MAS simple_mas_tell {
+    agents: neo;
+            agent_smith;
+    aslSourcePath: "src/agt";
+}

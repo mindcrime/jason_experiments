@@ -1,0 +1,6 @@
+
+MAS simple_env_action_percept {
+    environment: SimpleEnv()
+    agents: agent_smith;
+    aslSourcePath: "src/agt";
+}

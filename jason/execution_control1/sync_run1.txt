@@ -1,0 +1,21 @@
+[Env] init() arg[0] = 10
+[MyAgent2] [0] [1729292852509] Agent from file:src/agt/agent1.asl
+[MyAgent2] [0] [1729292852531] Agent from file:src/agt/agent1.asl
+[MyAgent] [0] [1729292852534] Agent from file:src/agt/agent2.asl
+[MyAgent] [0] [1729292866541] Agent from file:src/agt/agent2.asl
+[MyAgent2] [0] [1729292880543] Agent from file:src/agt/agent3.asl
+[MyAgent2] [0] [1729292880550] Agent from file:src/agt/agent3.asl
+[Env] executing: slow_action
+[agent3] 0
+[agent1] 0
+[agent3] Hello, Agent3!
+[agent1] Hello, Agent1!
+[MyAgent2] [3] [1729292881060] Agent from file:src/agt/agent1.asl
+[MyAgent2] [3] [1729292881060] Agent from file:src/agt/agent3.asl
+[agent3] 4
+[agent1] 4
+[agent1] Done
+[agent3] Started other action
+[agent3] Done
+[agent2] 771028
+[agent2] Hello, Agent2!

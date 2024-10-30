@@ -1,0 +1,6 @@
+MAS matrix_simulation {
+
+    agents: neo;
+            smith;
+
+}

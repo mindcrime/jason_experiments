@@ -1,0 +1,22 @@
+/*
+    jason_agent_blank
+    ---------------------------
+
+    Jason Application File
+
+    This file defines the initial state of the MAS
+
+    Jason 3.2.0
+    October 05, 2024 - 20:14:04
+*/
+
+MAS domestic_robot_exercise5 {
+
+    environment: env.Env("true")
+
+    // agents: agent1 agentArchClass arch.MyAgtArch agentClass agent.CustomAgent;
+
+    agents: agent1[jmxDebug=false] agentClass agent.JmxAgent agentArchClass arch.MyAgtArch;
+
+    aslSourcePath: "src/agt";
+}
