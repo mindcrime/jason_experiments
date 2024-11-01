@@ -1,0 +1,85 @@
+/*
+   Project xmpp-bdi-bot1
+
+   Gradle build file for Jason Application
+   October 12, 2024 - 19:46:28
+*/
+
+defaultTasks 'run'
+
+apply plugin: 'java'
+
+// set version of group for your project
+//version '1.0'
+//group   'io.github.jason-lang'
+
+java {
+   toolchain {
+     languageVersion = JavaLanguageVersion.of(17)
+   }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://raw.githubusercontent.com/jacamo-lang/mvn-repo/master" }
+    maven { url "https://jade.tilab.com/maven/" }
+}
+
+dependencies {
+    implementation 'io.github.jason-lang:jason-interpreter:3.2.0'
+
+	/* 
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-im
+	implementation group: 'org.igniterealtime.smack', name: 'smack-im', version: '4.4.8'
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-tcp
+	implementation group: 'org.igniterealtime.smack', name: 'smack-tcp', version: '4.4.8'
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-extensions
+	implementation group: 'org.igniterealtime.smack', name: 'smack-extensions', version: '4.4.8'
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-core
+	implementation group: 'org.igniterealtime.smack', name: 'smack-core', version: '4.4.8'
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-experimental
+	implementation group: 'org.igniterealtime.smack', name: 'smack-experimental', version: '4.4.8'
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-xmlparser-xpp3
+	implementation group: 'org.igniterealtime.smack', name: 'smack-xmlparser-xpp3', version: '4.4.8'
+	// https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-resolver-dnsjava
+	implementation group: 'org.igniterealtime.smack', name: 'smack-resolver-dnsjava', version: '4.4.8'
+	*/
+	
+	implementation group: 'org.igniterealtime.smack', name: 'smack-java8-full', version: '4.4.8'
+	
+	
+    // to use locally installed jars:
+    implementation fileTree(dir: 'lib', include: '*.jar')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+            srcDir 'src/agt'
+        }
+    }
+}
+
+task run (type: JavaExec, dependsOn: 'classes') {
+    description 'runs the application'
+    mainClass = 'jason.infra.local.RunLocalMAS'
+    args = ['xmpp-bdi-bot1.mas2j']
+	// options:
+	//     args = ['plan_failure1.mas2j', '--debug', '--no-net', '--empty-mas']
+	//     args = ['plan_failure1.mas2j', '--log-conf', 'l.p'] // to use file l.p to configure logging
+    classpath sourceSets.main.runtimeClasspath
+
+	systemProperty "jdk.tls.namedGroups", "secp256r1, secp384r1, ffdhe2048, ffdhe3072"
+	
+}
+
+task runJade (type: JavaExec, dependsOn: 'classes') {
+    description 'runs the application with Jade infrastructure'
+    mainClass = 'jason.infra.jade.RunJadeMAS'
+    args = [ 'xmpp-bdi-bot1.mas2j' ]
+    classpath sourceSets.main.runtimeClasspath
+}
